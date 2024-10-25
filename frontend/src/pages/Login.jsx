@@ -19,21 +19,19 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://leaderboard-dhll.onrender.com/api/auth/v1/login",
+        // "https://leaderboard-dhll.onrender.com/api/auth/v1/login",
         formData
       );
 
-      // console.log("login", response);
+      console.log("login", response);
 
       if (response.data.success) {
         toast.success("Login successfully");
         login(response.data);
         navigate("/");
-      } else {
-        setError(response.data.message || "Login failed");
-      }
+      } 
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      setError(err.response.data.message);
     }
   };
 

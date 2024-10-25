@@ -31,11 +31,12 @@ const Register = () => {
       if (response.data.success) {
         toast.success("Registration successfully");
         navigate("/login");
-      } else {
-        setError(response.data.message || "Registration failed");
-      }
+      } 
+      // else {
+      //   setError(response.data.message || "Registration failed");
+      // }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      setError(err.response.data.message);
     }
   };
 
