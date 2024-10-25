@@ -17,6 +17,7 @@ app.use(
     // origin: "*", 
     origin: process.env.URL,
     methods: "GET,POST,PUT,DELETE,PATCH", // Allowed methods
+    credentials: true,
   })
 );
 
