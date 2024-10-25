@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        // "https://leaderboard-dhll.onrender.com/api/auth/v1/login",
+        "https://leaderboard-dhll.onrender.com/api/auth/v1/login",
         formData
       );
 
