@@ -22,7 +22,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:7000/api/auth/v1/register",
+        "https://leaderboard-dhll.onrender.com/api/auth/v1/register",
         formData
       );
 

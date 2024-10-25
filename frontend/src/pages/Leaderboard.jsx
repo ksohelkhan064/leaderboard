@@ -15,7 +15,7 @@ const Leaderboard = () => {
     try {
       if (activeTab === period) {
         const response = await axios.get(
-          `http://localhost:7000/api/user/v1/your-${period}-history`
+          `https://leaderboard-dhll.onrender.com/api/user/v1/your-${period}-history`
         );
         // console.log(response.data.data)
         const sortedUsers = response.data.data.sort(
@@ -36,7 +36,7 @@ const Leaderboard = () => {
   const fetchUserHistory = async (username) => {
     try {
       const response = await axios.post(
-        `http://localhost:7000/api/user/v1/your-history`,
+        `https://leaderboard-dhll.onrender.com/api/user/v1/your-history`,
         { username }
       );
       setUserHistory(response.data.data);

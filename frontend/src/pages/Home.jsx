@@ -17,7 +17,7 @@ const Home = () => {
   const fetchFriends = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:7000/api/user/v1/get-users"
+        "https://leaderboard-dhll.onrender.com/api/user/v1/get-users"
       );
       // console.log(response)
 
@@ -46,7 +46,7 @@ const Home = () => {
   const handleClaimPoints = async (username) => {
     try {
       const response = await axios.patch(
-        `http://localhost:7000/api/user/v1/claim-points/`,
+        `https://leaderboard-dhll.onrender.com/api/user/v1/claim-points/`,
         { username: username }
       );
 
