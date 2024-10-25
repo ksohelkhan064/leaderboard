@@ -14,27 +14,24 @@ const Home = () => {
     fetchFriends();
   }, []);
 
-
   const fetchFriends = async () => {
     try {
-
-      const response = await axios.get("http://localhost:7000/api/user/v1/get-users");
+      const response = await axios.get(
+        "http://localhost:7000/api/user/v1/get-users"
+      );
       // console.log(response)
 
       const data = response.data;
 
-      
       // console.log(user)
       if (response.data.success) {
-        
         // Filter out current user and take top 10
         const filteredFriends = data.data
           .filter((friend) => friend._id !== user.data._id)
           .slice(0, 10);
-          // console.log(filteredFriends)
+        // console.log(filteredFriends)
         setFriends(filteredFriends);
-      }
-       else {
+      } else {
         setError("Failed to fetch friends");
       }
     } catch (err) {
@@ -48,14 +45,15 @@ const Home = () => {
 
   const handleClaimPoints = async (username) => {
     try {
-
-      const response = await axios.patch(`http://localhost:7000/api/user/v1/claim-points/`, { username: username });
+      const response = await axios.patch(
+        `http://localhost:7000/api/user/v1/claim-points/`,
+        { username: username }
+      );
 
       if (response.data.success) {
         toast.success(`Points claimed successfully for ${username}`);
         fetchFriends();
-      } 
-      else {
+      } else {
         setError("Failed to claim points");
       }
     } catch (err) {

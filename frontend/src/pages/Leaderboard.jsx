@@ -14,9 +14,13 @@ const Leaderboard = () => {
   const fetchData = async (period) => {
     try {
       if (activeTab === period) {
-        const response = await axios.get(`http://localhost:7000/api/user/v1/your-${period}-history`);
+        const response = await axios.get(
+          `http://localhost:7000/api/user/v1/your-${period}-history`
+        );
         // console.log(response.data.data)
-        const sortedUsers = response.data.data.sort((a, b) => b.totalPointsAwarded - a.totalPointsAwarded);
+        const sortedUsers = response.data.data.sort(
+          (a, b) => b.totalPointsAwarded - a.totalPointsAwarded
+        );
         setLeaderboardData(sortedUsers);
       }
     } catch (error) {
@@ -31,7 +35,10 @@ const Leaderboard = () => {
   // Function to fetch user history
   const fetchUserHistory = async (username) => {
     try {
-      const response = await axios.post(`http://localhost:7000/api/user/v1/your-history`, { username });
+      const response = await axios.post(
+        `http://localhost:7000/api/user/v1/your-history`,
+        { username }
+      );
       setUserHistory(response.data.data);
       setSelectedUser(username);
       setModalOpen(true);
@@ -40,7 +47,7 @@ const Leaderboard = () => {
     }
   };
 
-  const topUsers = leaderboardData.slice(0, 3); 
+  const topUsers = leaderboardData.slice(0, 3);
 
   return (
     <div className="container mx-auto p-4">
@@ -60,7 +67,6 @@ const Leaderboard = () => {
         ))}
       </div>
 
-      
       {/* Top 3 Users Section */}
       <div className="bg-white/80 shadow-md rounded-lg p-6 mb-6 max-w-[950px] mx-auto">
         <h2 className="text-xl font-bold mb-6 text-center">Top 3 Users</h2>
@@ -71,7 +77,12 @@ const Leaderboard = () => {
             topUsers.map((user, index) => (
               <div key={user._id} className="text-center">
                 <p className="text-lg font-bold">{user._id}</p>
-                <p className="text-orange-500 font-semibold">Prize: {user.Points} <span className="text-green-500 font-bold">₹ {user.totalPoints || user.totalPointsAwarded}</span></p>
+                <p className="text-orange-500 font-semibold">
+                  Prize: {user.Points}{" "}
+                  <span className="text-green-500 font-bold">
+                    ₹ {user.totalPoints || user.totalPointsAwarded}
+                  </span>
+                </p>
                 <p className="font-semibold">Rank: {index + 1}</p>
               </div>
             ))
@@ -98,20 +109,25 @@ const Leaderboard = () => {
               {leaderboardData.map((user, index) => (
                 <tr key={user._id} className="border-t">
                   <td>
-
-                  <FaRegUser className="inline "/>
+                    <FaRegUser className="inline " />
                   </td>
-                  <td className="px-4 py-2 cursor-pointer font-semibold"
-                    onClick={() => fetchUserHistory(user._id)}>
-                      <div className="flex items-center justify-center">
-                        <div className="ml-2">{user._id}<div>Rank: {index + 1}</div></div>
-                      </div>
-                    </td>
                   <td
-                    className="px-4 py-2 text-orange-500 font-semibold">
+                    className="px-4 py-2 cursor-pointer font-semibold"
+                    onClick={() => fetchUserHistory(user._id)}
+                  >
+                    <div className="flex items-center justify-center">
+                      <div className="ml-2">
+                        {user._id}
+                        <div>Rank: {index + 1}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-4 py-2 text-orange-500 font-semibold">
                     ₹ {user.totalPoints || user.totalPointsAwarded}
                   </td>
-                  <td className="px-4 py-2 font-semibold text-green-500">{user.totalPoints || user.totalPointsAwarded}</td>
+                  <td className="px-4 py-2 font-semibold text-green-500">
+                    {user.totalPoints || user.totalPointsAwarded}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -120,7 +136,11 @@ const Leaderboard = () => {
       </div>
 
       {/* Modal to show user history */}
-      <UserHistoryModal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={`${selectedUser}'s History`}>
+      <UserHistoryModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={`${selectedUser}'s History`}
+      >
         {userHistory.length === 0 ? (
           <p>No history available</p>
         ) : (
@@ -135,7 +155,9 @@ const Leaderboard = () => {
         )}
       </UserHistoryModal>
 
-      {errorMessage && <p className="text-center text-red-500">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="text-center text-red-500">{errorMessage}</p>
+      )}
     </div>
   );
 };

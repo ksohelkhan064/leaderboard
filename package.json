@@ -1,11 +1,13 @@
 {
-  "name": "leaderboard-backed",
+  "name": "leaderboard-backend",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon backend/index.js",
+    "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start":"nodemon backend/index.js"
+
   },
   "author": "",
   "license": "ISC",

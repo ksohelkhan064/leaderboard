@@ -37,7 +37,7 @@ export const Register = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Registration Successful", data: user });
   } catch (error) {
-    console.error("Error while registering user:", error);
+    // console.error("Error while registering user:", error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -71,7 +71,7 @@ export const Login = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.log("Error while logging in", error);
+    // console.log("Error while logging in", error);
     return res
       .status(500)
       .json({ success: false, message: "Internal Server Error" });

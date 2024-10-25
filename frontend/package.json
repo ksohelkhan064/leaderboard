@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.10",
     "axios": "^1.7.7",
+    "leaderboard-backed": "file:..",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",

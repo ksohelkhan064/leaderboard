@@ -10,7 +10,7 @@ export const getAllUser = async (req, res) => {
       data: allUsers,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({
       success: false,
       message: "server error",
@@ -49,7 +49,7 @@ export const claimPoints = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({
       success: false,
       message: "Server error",
@@ -89,7 +89,7 @@ export const getTodayHistory = async (req, res) => {
       data: todayData,
     });
   } catch (error) {
-    console.error("Error fetching today's history:", error);
+    // console.error("Error fetching today's history:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
@@ -133,7 +133,7 @@ export const getWeeklyData = async (req, res) => {
       data: weeklyData,
     });
   } catch (error) {
-    console.error("Error fetching weekly data:", error);
+    // console.error("Error fetching weekly data:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
@@ -187,7 +187,7 @@ export const getMonthlyData = async (req, res) => {
       data: monthlyData,
     });
   } catch (error) {
-    console.error("Error fetching monthly data:", error);
+    // console.error("Error fetching monthly data:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
@@ -234,7 +234,7 @@ export const getUserHistory = async (req, res) => {
       data: formattedHistory,
     });
   } catch (error) {
-    console.error("Error fetching user history:", error);
+    // console.error("Error fetching user history:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
@@ -263,7 +263,7 @@ export const getUserWithHelpOfToken = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    console.error("Error fetching user:", error);
+    // console.error("Error fetching user:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
@@ -292,7 +292,7 @@ export const getUserWithHelpOfId = async (req, res) => {
       data: user,
     });
   } catch (error) {
-    console.error("Error fetching user:", error);
+    // console.error("Error fetching user:", error);
     res.status(500).json({
       success: false,
       message: "Server error.",
