@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Leaderboard from './pages/Leaderboard';
 import { useAuth } from './context/AuthContext';
+import NotFound from './pages/Not-Found';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -37,6 +38,7 @@ const App = () => {
                   <Leaderboard />
                 </PrivateRoute>
               } />
+            <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </div>
